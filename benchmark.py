@@ -85,6 +85,18 @@ parser.add_argument(
     action="store_true",
 )
 
+parser.add_argument(
+    "--definitions",
+    help="Path for definitions file",
+    type=Path,
+    default=None)
+
+parser.add_argument(
+    "--neighbours",
+    help="Path for neighbours file",
+    type=Path,
+    default=None)
+
 if __name__ == "__main__": 
 
     # parse the arguments
@@ -110,8 +122,8 @@ if __name__ == "__main__":
     model = Sandwich(
         cross_encoder_nv_path=models_dir / "encoder-nv",
         cross_encoder_v_path=models_dir / "encoder-v",
-        definitions_path=babelnet_dir / "definitions.json",
-        neighbours_path=babelnet_dir / "neighbours.json",
+        definitions_path=babelnet_dir / "definitions.json" if parser.definitions is None else parser.defintions,
+        neighbours_path=babelnet_dir / "neighbours.json" if parser.neighbours is None else parser.neighbours,
         device="cuda" if args.gpu else "cpu",
     )
 
