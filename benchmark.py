@@ -122,7 +122,7 @@ if __name__ == "__main__":
     model = Sandwich(
         cross_encoder_nv_path=models_dir / "encoder-nv",
         cross_encoder_v_path=models_dir / "encoder-v",
-        definitions_path=babelnet_dir / "definitions.json" if args.definitions is None else args.defintions,
+        definitions_path=babelnet_dir / "definitions.json" if args.definitions is None else args.definitions,
         neighbours_path=babelnet_dir / "neighbours.json" if args.neighbours is None else args.neighbours,
         device="cuda" if args.gpu else "cpu",
     )
